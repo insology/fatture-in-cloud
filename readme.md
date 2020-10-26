@@ -20,6 +20,7 @@ $ composer require insologystudio/fatture-in-cloud
 use FattureInCloud;
 $clientService =  FattureInCloud::client();
 $result = $clientService->list();
+```
 
 ## Change log
 
