@@ -3,7 +3,6 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
 This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
 
@@ -17,9 +16,17 @@ $ composer require insologystudio/fatture-in-cloud
 
 ## Usage
 
+```php
+use FattureInCloud;
+$clientService =  FattureInCloud::client();
+$result = $clientService->list();
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
+
+## How to use
+
 
 ## Testing
 
@@ -37,7 +44,7 @@ If you discover any security related issues, please email author email instead o
 
 ## Credits
 
-- [author name][link-author]
+- [Insology Studio][link-author]
 - [All Contributors][link-contributors]
 
 ## License
