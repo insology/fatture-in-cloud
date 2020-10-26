@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Http;
 abstract class Api implements ApiFactory 
 {   
 
-    private array $errors = [];
-    private array $params = [];
-    private string $apiUid;
-    private string $apiKey;
+    private $errors = [];
+    private $params = [];
+    private $apiUid;
+    private $apiKey;
 
     /**
      * Auth constructor.
