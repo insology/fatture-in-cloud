@@ -1,0 +1,42 @@
+{
+    "name": "insologystudio/fatture-in-cloud",
+    "description": "An interface to connect with fatture in cloud Api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Insology Studio",
+            "email": "info@insology.com",
+            "homepage": "https://www.insology.com"
+        }
+    ],
+    "homepage": "https://github.com/insologystudio/fatture-in-cloud",
+    "keywords": ["Laravel", "FattureInCloud"],
+    "require": {
+        "illuminate/support": "~7|~8",
+        "guzzlehttp/guzzle"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "InsologyStudio\\FattureInCloud\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "InsologyStudio\\FattureInCloud\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "InsologyStudio\\FattureInCloud\\FattureInCloudServiceProvider"
+            ],
+            "aliases": {
+                "FattureInCloud": "InsologyStudio\\FattureInCloud\\Facades\\FattureInCloud"
+            }
+        }
+    }
+}
