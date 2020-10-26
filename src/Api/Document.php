@@ -226,7 +226,7 @@ class Document extends Api implements DocumentsFactory
             'lista_pagamenti' => 'required|array', 
             'lista_pagamenti.*.data_scadenza' => 'required|date_format:d/m/Y',
             'lista_pagamenti.*.data_saldo' => 'required|date_format:d/m/Y',
-            'lista_pagamenti.*.importo' => 'required|numeric',
+            'lista_pagamenti.*.importo' => 'required',
             'lista_pagamenti.*.metodo' => 'required|string',
             'ddt_numero' => 'nullable|string', 
             'ddt_data' => 'nullable|string', 
