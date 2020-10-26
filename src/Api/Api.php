@@ -1,10 +1,10 @@
 <?php
 
-namespace InsologyStudio\FattureInCloud\Services;
-use InsologyStudio\FattureInCloud\Factory\Api;
+namespace InsologyStudio\FattureInCloud\Api;
+use InsologyStudio\FattureInCloud\Factory\ApiFactory;
 use Illuminate\Support\Facades\Http;
 
-abstract class ApiService implements Api 
+abstract class Api implements ApiFactory 
 {   
 
     private array $errors = [];
@@ -53,7 +53,7 @@ abstract class ApiService implements Api
             ])->{$method}($url, $data);
             return $response->json();
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return (object) [
                 'error'   => $e->getMessage(),
                 'code'    => $e->getCode(),

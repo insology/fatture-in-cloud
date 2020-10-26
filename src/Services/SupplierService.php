@@ -1,11 +1,9 @@
 <?php
 
 namespace InsologyStudio\FattureInCloud\Services;
-use Illuminate\Support\Facades\Http;
-use InsologyStudio\FattureInCloud\Traits\PayPalRequest as PayPalAPIRequest;
-use Illuminate\Support\Facades\Validator;
+use InsologyStudio\FattureInCloud\Api\PersonalData;
 
-class SupplierService extends PersonalDataService
+class SupplierService extends PersonalData
 {   
     protected $subject = 'fornitori';
     public function __construct()

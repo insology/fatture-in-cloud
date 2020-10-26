@@ -1,11 +1,11 @@
 <?php
 
 namespace InsologyStudio\FattureInCloud\Services;
-use InsologyStudio\FattureInCloud\Api\PersonalData;
+use InsologyStudio\FattureInCloud\Api\Purchase;
 
-class ClientService extends PersonalData
+class PurchaseService extends Purchase
 {   
-    protected $subject = 'clienti';
+    protected $subject = 'acquisti';
 
     public function __construct()
     {

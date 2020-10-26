@@ -15,6 +15,7 @@ $ composer require insologystudio/fatture-in-cloud
 ```
 
 ## Usage
+Please reference to  [fattureincloud.it](https://api.fattureincloud.it/v1/documentation/dist/) api docs.
 
 ```php
 <?php
@@ -38,8 +39,6 @@ class ClientController extends Controller
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## How to use
 
 
 ## Testing

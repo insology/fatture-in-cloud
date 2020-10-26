@@ -2,7 +2,7 @@
 
 namespace InsologyStudio\FattureInCloud\Factory;
 
-interface Api
+interface ApiFactory
 {
     public function post(string $path, array $data): array;
 }

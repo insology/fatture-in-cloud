@@ -1,12 +1,10 @@
 <?php
 
-namespace InsologyStudio\FattureInCloud\Services;
-use InsologyStudio\FattureInCloud\Factory\Document;
-use Illuminate\Support\Facades\Http;
-use InsologyStudio\FattureInCloud\Traits\PayPalRequest as PayPalAPIRequest;
+namespace InsologyStudio\FattureInCloud\Api;
+use InsologyStudio\FattureInCloud\Factory\PurchaseFactory;
 use Illuminate\Support\Facades\Validator;
 
-class DocumentService extends ApiService implements Document
+class Purchase extends Api implements PurchaseFactory
 {   
     private $subject;
 
@@ -17,25 +15,22 @@ class DocumentService extends ApiService implements Document
         
     }
     /**
-     * List invoices
+     * List documents
      * @param array $data
      * @return array
      */
-    public function list($data = []): array
+    public function list(array $data): array
     {       
         $validator = Validator::make($data, [
-            'anno' => 'required_without:data_inizio|date_format:Y', 
-            'data_inizio' => 'required_without:anno|date', 
+            'anno_competenza' => 'required_without:data_inizio|date_format:Y', 
+            'data_inizio' => 'required_without:anno_competenza|date', 
             'data_fine' => 'required_with:data_inizio|date', 
-            'cliente' => 'string', 
+            'tipo' => 'string', 
             'fornitore' => 'string', 
             'id_fornitore' => 'string', 
             'id_cliente' => 'string', 
             'saldato' => 'string',
-            'oggetto' => 'string', 
-            'ogni_ddt' => 'string', 
-            'PA_tipo_cliente' => 'string', 
-            'PA' => 'string', 
+            'mostra_link_allegato' => 'boolean', 
         ]);
 
         if ($validator->fails()) {
@@ -46,7 +41,7 @@ class DocumentService extends ApiService implements Document
     }
 
     /**
-     * Show invoices detail
+     * Show document detail
      * @param array $data
      * @return array
      */
@@ -64,7 +59,7 @@ class DocumentService extends ApiService implements Document
     }
 
     /**
-     * Show invoice general settings
+     * Show document general settings
      * @param array $data
      * @return array
      */
@@ -82,7 +77,7 @@ class DocumentService extends ApiService implements Document
     }
 
      /**
-     * Show invoice email info
+     * Show document email info
      * @param array $data
      * @return array
      */
@@ -99,7 +94,7 @@ class DocumentService extends ApiService implements Document
     }
 
      /**
-     * Send invoice to customer
+     * Send document to customer
      * @param array $data
      * @return array
      */
@@ -116,7 +111,7 @@ class DocumentService extends ApiService implements Document
     }
 
      /**
-     * Create the invoice
+     * Create the document
      * @param array $data
      * @return array
      */
@@ -132,7 +127,7 @@ class DocumentService extends ApiService implements Document
     }
 
     /**
-     * Update the invoice
+     * Update the document
      * @param array $data
      * @return array
      */
@@ -150,7 +145,7 @@ class DocumentService extends ApiService implements Document
     }
 
     /**
-     * Delete the invoice
+     * Delete the document
      * @param array $data
      * @return array
      */
@@ -168,7 +163,7 @@ class DocumentService extends ApiService implements Document
     }
 
     /**
-     * Invoice create/update rules
+     * Document create/update rules
      * @return array
      */
     private function rules()

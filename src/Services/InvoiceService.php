@@ -1,12 +1,9 @@
 <?php
 
 namespace InsologyStudio\FattureInCloud\Services;
-use InsologyStudio\FattureInCloud\Factory\Document;
-use Illuminate\Support\Facades\Http;
-use InsologyStudio\FattureInCloud\Traits\PayPalRequest as PayPalAPIRequest;
-use Illuminate\Support\Facades\Validator;
+use InsologyStudio\FattureInCloud\Api\Document;
 
-class InvoiceService extends DocumentService implements Document
+class InvoiceService extends Document
 {   
     protected $subject = 'fatture';
 

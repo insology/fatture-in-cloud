@@ -2,7 +2,7 @@
 
 namespace InsologyStudio\FattureInCloud;
 
-use InsologyStudio\FattureInCloud\Services\FattureInCloud as FIC; 
+use InsologyStudio\FattureInCloud\FattureInCloud as FIC; 
 
 use Illuminate\Support\ServiceProvider;
 

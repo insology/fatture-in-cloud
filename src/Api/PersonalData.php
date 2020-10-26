@@ -1,12 +1,10 @@
 <?php
 
-namespace InsologyStudio\FattureInCloud\Services;
-use InsologyStudio\FattureInCloud\Factory\PersonalData;
-use Illuminate\Support\Facades\Http;
-use InsologyStudio\FattureInCloud\Traits\PayPalRequest as PayPalAPIRequest;
+namespace InsologyStudio\FattureInCloud\Api;
+use InsologyStudio\FattureInCloud\Factory\PersonalDataFactory;
 use Illuminate\Support\Facades\Validator;
 
-class PersonalDataService extends ApiService implements PersonalData
+class PersonalData extends Api implements PersonalDataFactory
 {   
     private $subject;
 
@@ -21,7 +19,7 @@ class PersonalDataService extends ApiService implements PersonalData
      * @param array $data
      * @return array
      */
-    public function list($data = []): array
+    public function list(array $data = []): array
     {   
         $validator = Validator::make($data, [
             'filtro' => 'string',
@@ -39,7 +37,7 @@ class PersonalDataService extends ApiService implements PersonalData
         return $this->post("{$this->subject}/lista", $data);
     }
 
-    public function create($data)
+    public function create($data): array
     {
         $validator = Validator::make($data, $this->rules());
 
@@ -51,7 +49,7 @@ class PersonalDataService extends ApiService implements PersonalData
         
     }
 
-    public function update($data): string
+    public function update($data): array
     {
         $validator = Validator::make($data, array_merge(['id' => 'required|integer'], $this->rules));
 
@@ -63,7 +61,7 @@ class PersonalDataService extends ApiService implements PersonalData
         
     }
 
-    public function delete($data): array
+    public function delete(array $data): array
     {
         $validator = Validator::make($data, [
             'id' => 'required|integer',

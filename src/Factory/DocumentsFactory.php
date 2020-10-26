@@ -2,7 +2,7 @@
 
 namespace InsologyStudio\FattureInCloud\Factory;
 
-interface Document
+interface DocumentsFactory
 {
     public function list(array $data): array;
     public function details(array $data): array;
@@ -10,7 +10,7 @@ interface Document
     public function infoMail(array $data): array;
     public function sendMail(array $data): array;
     public function update(array $data): array;
-    public function create(array $data);
-    public function delete(integer $id): array;
+    public function create(array $data): array;
+    public function delete(array $data): array;
     // public function import(array $data): array;
 }
