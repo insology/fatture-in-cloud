@@ -17,9 +17,22 @@ $ composer require insologystudio/fatture-in-cloud
 ## Usage
 
 ```php
+<?php
+namespace App\Http\Controllers;
 use FattureInCloud;
-$clientService =  FattureInCloud::client();
-$result = $clientService->list();
+
+class ClientController extends Controller
+{
+
+
+    public function index()
+    {
+        $clientService =  FattureInCloud::client();
+        $list = $clientService->list();
+        $create = $clientService->create(['nome' => 'Joe']);
+    }
+}
+
 ```
 
 ## Change log
