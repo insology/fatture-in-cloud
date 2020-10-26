@@ -51,7 +51,7 @@ class PersonalData extends Api implements PersonalDataFactory
 
     public function update($data): array
     {
-        $validator = Validator::make($data, array_merge(['id' => 'required|integer'], $this->rules));
+        $validator = Validator::make($data, array_merge(['id' => 'required|integer'], $this->rules()));
 
         if ($validator->fails()) {
             return $validator->messages()->toArray();
