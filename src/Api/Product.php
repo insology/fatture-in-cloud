@@ -76,19 +76,19 @@ class Product extends Api implements ProductFactory
     private function rules(): array
     {
         return [
-            'cod' => 'string',
+            'cod' => 'nullable|string',
             'nome' => 'required|string|max:255',
-            'desc' => 'string',
-            'prezzo_ivato' => 'boolean',
-            'prezzo_netto' => 'numeric',
-            'prezzo_lordo' => 'numeric',
-            'costo' => 'numeric',
-            'cod_iva' => 'numeric',
-            'um' => 'string',
-            'categoria' => 'string',
-            'note' => 'string',
-            'magazzino' => 'boolean',
-            'giacenza_iniziale' => 'numeric'
+            'desc' => 'nullable|string',
+            'prezzo_ivato' => 'nullable|boolean',
+            'prezzo_netto' => 'nullable|numeric',
+            'prezzo_lordo' => 'nullable|numeric',
+            'costo' => 'nullable|numeric',
+            'cod_iva' => 'nullable|numeric',
+            'um' => 'nullable|string',
+            'categoria' => 'nullable|string',
+            'note' => 'nullable|string',
+            'magazzino' => 'nullable|boolean',
+            'giacenza_iniziale' => 'nullable|numeric'
         ];
     }
 }
