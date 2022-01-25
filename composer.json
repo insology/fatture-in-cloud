@@ -12,8 +12,7 @@
     "homepage": "https://github.com/insologystudio/fatture-in-cloud",
     "keywords": ["Laravel", "FattureInCloud"],
     "require": {
-        "illuminate/support": "~7|~8",
-        "guzzlehttp/guzzle": "^7.0.1"
+        "fattureincloud/fattureincloud-php-sdk": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",

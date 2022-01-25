@@ -2,31 +2,60 @@
 
 namespace InsologyStudio\FattureInCloud;
 
+use FattureInCloud\Api\ArchiveApi;
+use FattureInCloud\Api\CashbookApi;
+use FattureInCloud\Api\ClientsApi;
+use FattureInCloud\Api\CompaniesApi;
+use FattureInCloud\Api\InfoApi;
+use FattureInCloud\Api\IssuedDocumentsApi;
+use FattureInCloud\Api\ProductsApi;
+use FattureInCloud\Api\ReceiptsApi;
+use FattureInCloud\Api\ReceivedDocumentsApi;
+use FattureInCloud\Api\SettingsApi;
+use FattureInCloud\Api\SuppliersApi;
+use FattureInCloud\Api\TaxesApi;
+use FattureInCloud\Api\UserApi;
+use FattureInCloud\Configuration;
+use GuzzleHttp\ClientInterface;
+
+/**
+ * @method ArchiveApi archive()
+ * @method CashbookApi cashbook()
+ * @method ClientsApi clients()
+ * @method CompaniesApi companies()
+ * @method InfoApi info()
+ * @method IssuedDocumentsApi issuedDocuments()
+ * @method ProductsApi products()
+ * @method ReceiptsApi receipts()
+ * @method ReceivedDocumentsApi receivedDocuments()
+ * @method SettingsApi settings()
+ * @method SuppliersApi suppliers()
+ * @method TaxesApi taxes()
+ * @method UserApi user()
+ */
 class FattureInCloud
-{   
-    public function client(array $datas = [])
-    {   
-        return new Services\ClientService($datas);
+{
+    public Configuration $config;
+    public ?ClientInterface $httpClient = null;
+
+    public function __construct()
+    {
+        $secret = env('FATTURE_CLOUD_API_SECRET');
+
+        $this->config = Configuration::getDefaultConfiguration()->setAccessToken($secret);
     }
 
-    public function supplier(array $datas = [])
-    {   
-        return new Services\SupplierService($datas);
-    }
+    /**
+     * Instantiate new *Api class. E.g. new UserApi()
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        $endpoint = 'FattureInCloud\Api\\' . ucfirst($name) . 'Api';
 
-    public function invoice(array $datas = [])
-    {   
-        return new Services\InvoiceService($datas);
+        return new $endpoint($this->httpClient, $this->config);
     }
-    
-    public function product(array $datas = [])
-    {   
-        return new Services\ProductService($datas);
-    }
-
-    public function purchase(array $datas = [])
-    {   
-        return new Services\PurchaseService($datas);
-    }
-    
 }

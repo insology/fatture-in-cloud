@@ -2,8 +2,6 @@
 
 namespace InsologyStudio\FattureInCloud;
 
-use InsologyStudio\FattureInCloud\FattureInCloud as FIC; 
-
 use Illuminate\Support\ServiceProvider;
 
 class FattureInCloudServiceProvider extends ServiceProvider
@@ -16,12 +14,8 @@ class FattureInCloudServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/fatture-in-cloud.php' => config_path('fatture-in-cloud.php'),
+            __DIR__ . '/../config/fatture-in-cloud.php' => config_path('fatture-in-cloud.php'),
         ], 'config');
-        // Publishing is only necessary when using the CLI.
-        if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-        }
     }
 
     /**
@@ -31,34 +25,10 @@ class FattureInCloudServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/fatture-in-cloud.php', 'fatture-in-cloud');
-        // Register the service the package provides.
-        $this->app->singleton('fatture-in-cloud', function ($app) {
-            return new FIC;
-        });
-    }
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/fatture-in-cloud.php', 'fatture-in-cloud'
+        );
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return ['fatture-in-cloud'];
-    }
-
-    /**
-     * Console-specific booting.
-     *
-     * @return void
-     */
-    protected function bootForConsole(): void
-    {
-        // Publishing the configuration file.
-        $this->publishes([
-            __DIR__.'/../config/fatture-in-cloud.php' => config_path('fatture-in-cloud.php'),
-        ], 'fatture-in-cloud.config');
-
+        $this->app->singleton(FattureInCloud::class, fn() => new FattureInCloud());
     }
 }
