@@ -40,7 +40,7 @@ class FattureInCloud
 
     public function __construct()
     {
-        $secret = env('FATTURE_CLOUD_API_SECRET');
+        $secret = config('fatture-in-cloud.api_secret');
 
         $this->config = Configuration::getDefaultConfiguration()->setAccessToken($secret);
     }

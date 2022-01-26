@@ -2,50 +2,47 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
 
-Laravel Fatture In Cloud Service.
-Take a look at [contributing.md](contributing.md) to see a to do list.
+Laravel Fatture in Cloud service. Take a look at [contributing.md](contributing.md) to see a to do list.
 
 ## Installation
 
 Via Composer
 
 ``` bash
-$ composer require insologystudio/fatture-in-cloud
+composer require insologystudio/fatture-in-cloud
 ```
 
+In your `.env` file add `FATTURE_CLOUD_API_SECRET` and `FATTURE_CLOUD_COMPANY_ID`. 
+
 ## Usage
-Please reference to  [fattureincloud.it](https://api.fattureincloud.it/v1/documentation/dist/) api docs.
+
+Please reference to [fattureincloud.it](https://github.com/fattureincloud/fattureincloud-php-sdk) api docs.
+You can get an *Api class instance from the `FattureInCloud` service by calling a method with the same *Api class name less the Api suffix. E.g. Retrive `ClientsApi` by calling `$fattureInCloud->clients()`.
 
 ```php
 <?php
 namespace App\Http\Controllers;
-use FattureInCloud;
+
+use FattureInCloud\Model\ListClientsResponse;
+use InsologyStudio\FattureInCloud\FattureInCloud;
 
 class ClientController extends Controller
 {
-
-
-    public function index()
+    /**
+     * @param FattureInCloud $fattureInCloud
+     * @return ListClientsResponse 
+     * @throws \FattureInCloud\ApiException
+     */
+    public function index(FattureInCloud $fattureInCloud): ListClientsResponse
     {
-        $clientService =  FattureInCloud::client();
-        $list = $clientService->list();
-        $create = $clientService->create(['nome' => 'Joe']);
+        $companyId = config('fatture-in-cloud.company_id');
+
+        $clients = $fattureInCloud->clients()->listClients($companyId);
+        
+        return $clients;
     }
 }
-
-```
-
-## Change log
-
-Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-
-## Testing
-
-``` bash
-$ composer test
 ```
 
 ## Contributing
