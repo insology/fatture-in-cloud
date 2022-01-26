@@ -8,6 +8,7 @@ use FattureInCloud\Api\ClientsApi;
 use FattureInCloud\Api\CompaniesApi;
 use FattureInCloud\Api\InfoApi;
 use FattureInCloud\Api\IssuedDocumentsApi;
+use FattureInCloud\Api\IssuedEInvoicesApi;
 use FattureInCloud\Api\ProductsApi;
 use FattureInCloud\Api\ReceiptsApi;
 use FattureInCloud\Api\ReceivedDocumentsApi;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static CompaniesApi companies()
  * @method static InfoApi info()
  * @method static IssuedDocumentsApi issuedDocuments()
+ * @method static IssuedEInvoicesApi issuedEInvoice()
  * @method static ProductsApi products()
  * @method static ReceiptsApi receipts()
  * @method static ReceivedDocumentsApi receivedDocuments()

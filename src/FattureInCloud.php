@@ -8,6 +8,7 @@ use FattureInCloud\Api\ClientsApi;
 use FattureInCloud\Api\CompaniesApi;
 use FattureInCloud\Api\InfoApi;
 use FattureInCloud\Api\IssuedDocumentsApi;
+use FattureInCloud\Api\IssuedEInvoicesApi;
 use FattureInCloud\Api\ProductsApi;
 use FattureInCloud\Api\ReceiptsApi;
 use FattureInCloud\Api\ReceivedDocumentsApi;
@@ -25,6 +26,7 @@ use GuzzleHttp\ClientInterface;
  * @method CompaniesApi companies()
  * @method InfoApi info()
  * @method IssuedDocumentsApi issuedDocuments()
+ * @method IssuedEInvoicesApi issuedEInvoice()
  * @method ProductsApi products()
  * @method ReceiptsApi receipts()
  * @method ReceivedDocumentsApi receivedDocuments()
